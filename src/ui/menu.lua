@@ -9,13 +9,19 @@ function menu:draw()
         --love.graphics.printf("2.  File #2", love.graphics.getWidth()/2 - 4000, 30 * scale, 8000, "center")
         --love.graphics.printf("3.  File #3", love.graphics.getWidth()/2 - 4000, 40 * scale, 8000, "center")
 
-        love.graphics.printf("Press BackSpace to toggle fullscreen.", love.graphics.getWidth()/2 - 4000, 10 * scale, 8000, "center")
-        love.graphics.printf("Press Esc to close the game.", love.graphics.getWidth()/2 - 4000, 22 * scale, 8000, "center")
-        love.graphics.printf("Use WASD or Arrow Keys to move.", love.graphics.getWidth()/2 - 4000, 47 * scale, 8000, "center")
-        love.graphics.printf("Press the Spacebar to roll.", love.graphics.getWidth()/2 - 4000, 59 * scale, 8000, "center")
-        love.graphics.printf("Press Tab or E to equip items.", love.graphics.getWidth()/2 - 4000, 71 * scale, 8000, "center")
-        love.graphics.printf("Use the mouse to aim and attack.", love.graphics.getWidth()/2 - 4000, 83 * scale, 8000, "center")
-        love.graphics.printf("Press the Spacebar to start!", love.graphics.getWidth()/2 - 4000, 111 * scale, 8000, "center")
+        local y = 10
+        if love.system.getOS() ~= "Web" then
+            love.graphics.printf("Press BackSpace to toggle fullscreen.", love.graphics.getWidth()/2 - 4000, y * scale, 8000, "center")
+            y = y + 12
+            love.graphics.printf("Press Esc to close the game.", love.graphics.getWidth()/2 - 4000, y * scale, 8000, "center")
+            y = y + 25
+        end
+
+        love.graphics.printf("Use WASD or Arrow Keys to move.", love.graphics.getWidth()/2 - 4000, y * scale, 8000, "center")
+        love.graphics.printf("Press the Spacebar to roll.", love.graphics.getWidth()/2 - 4000, (y + 12) * scale, 8000, "center")
+        love.graphics.printf("Press Tab or E to equip items.", love.graphics.getWidth()/2 - 4000, (y + 24) * scale, 8000, "center")
+        love.graphics.printf("Use the mouse to aim and attack.", love.graphics.getWidth()/2 - 4000, (y + 36) * scale, 8000, "center")
+        love.graphics.printf("Press the Spacebar to start!", love.graphics.getWidth()/2 - 4000, (y + 64) * scale, 8000, "center")
     end
 end
 

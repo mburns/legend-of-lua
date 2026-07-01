@@ -45,12 +45,13 @@ function love.keypressed(key)
     if key == 'escape' then
         if pause.active then
             pause:toggle()
-        else
+        elseif love.system.getOS() ~= "Web" then
             love.event.quit()
         end
+        return
     end
 
-    if key == 'backspace' then
+    if key == 'backspace' and love.system.getOS() ~= "Web" then
         if fullscreen then
             local newWidth = 1920
             local newHeight = 1080
@@ -68,16 +69,6 @@ function love.keypressed(key)
             setWindowSize(true)
         end
         reinitSize()
-    end
-
-    if key == 'r' then
-        data.outfit = data.outfit + 1
-        if data.outfit > 4 then data.outfit = 1 end
-        sprites.playerSheet = love.graphics.newImage('sprites/player/playerSheet' .. data.outfit .. '.png')
-    end
-
-    if key == 'lshift' or key == 'rshift' then
-        --player:interact()
     end
 
     if key == 'return' or key == 'tab' or key == 'e' then
